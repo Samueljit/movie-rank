@@ -1,0 +1,28 @@
+{
+  "name": "movie-rank",
+  "version": "1.0.0",
+  "description": "pronto",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Samueljit/movie-rank.git"
+  },
+  "keywords": [
+    "1234"
+  ],
+  "author": "Gustavo Bolivar, Samuel Infante",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Samueljit/movie-rank/issues"
+  },
+  "homepage": "https://github.com/Samueljit/movie-rank#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^15.0.0",
+    "express": "^4.17.2"
+  }
+}
