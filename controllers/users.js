@@ -7,7 +7,7 @@ const usersPost = (req = request, res = response) => {
     const user = new User({ username, email, password });
    
     res.status(201).json({
-        msg: 'Account created',
+        message: 'Account created',
         user
     })
 }

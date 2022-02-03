@@ -7,32 +7,21 @@ class Server {
 
         this.app = express();
         this.port = process.env.PORT;
-
-        //paths
+       
         this.paths = {
-            users: '/api/register'
+            users: '/api/users'
         }
-
-        // middlewares
         this.middlewares();
-
-        //aplication routes
+        
         this.routes();
     }
 
     middlewares() {
-
-        //CORS
         this.app.use( cors() );
 
-        
-        // read and parse from the body
         this.app.use( express.json() );
 
-
-        //Public Folder
         this.app.use( express.static( 'public' ) );
-
     }
 
     routes() {
