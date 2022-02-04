@@ -1,12 +1,10 @@
-const { Router } = require('express');
-const { check } = require('express-validator');
+import { Router } from 'express';
+import { check } from 'express-validator';
+
+import { usersPost } from '../controllers/users.js';
+import { validateFields } from '../middlewares/validate-fields.js';
 
 const router = Router();
-
-const {usersPost} = require('../controllers/users');
-const {validateFields} = require('../middlewares/validate-fields');
-
-
 
 router.post('/', [
     check('username','The username is required').not().isEmpty(),
@@ -15,6 +13,4 @@ router.post('/', [
     validateFields
 ], usersPost);
 
-
-
-module.exports = router;
+export default router;

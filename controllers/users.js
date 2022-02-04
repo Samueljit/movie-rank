@@ -1,7 +1,7 @@
-const {request, response} = require('express');
-const User = require('../models/user');
+import { request, response } from 'express';
+import User from '../models/user.js';
 
-const usersPost = (req = request, res = response) => {
+export const usersPost = (req = request, res = response) => {
 
     const {username, email, password} = req.body;
     const user = new User({ username, email, password });
@@ -10,8 +10,4 @@ const usersPost = (req = request, res = response) => {
         message: 'Account created',
         user
     })
-}
-
-module.exports = {
-    usersPost
 }

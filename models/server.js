@@ -1,5 +1,7 @@
-const express = require('express');
-const cors = require('cors');
+import express from 'express';
+import cors from 'cors';
+
+import usersRoutes from "../routes/users.js";
 
 class Server {
 
@@ -11,8 +13,8 @@ class Server {
         this.paths = {
             users: '/api/users'
         }
+
         this.middlewares();
-        
         this.routes();
     }
 
@@ -25,7 +27,7 @@ class Server {
     }
 
     routes() {
-        this.app.use(this.paths.users, require('../routes/users'));
+        this.app.use(this.paths.users, usersRoutes);
     }
 
     listen() {
@@ -35,4 +37,4 @@ class Server {
     }
 }
 
-module.exports = Server;
+export default Server;
