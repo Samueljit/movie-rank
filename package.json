@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "pronto",
   "main": "app.js",
+  "type": "module",
   "scripts": {
-    "start": "node app.js",
+    "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -14,7 +15,7 @@
   "keywords": [
     "1234"
   ],
-  "author": "Gustavo Bolivar, Samuel Infante",
+  "author": "Samuel Infante, Gustavo Bolivar",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Samueljit/movie-rank/issues"
