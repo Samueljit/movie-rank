@@ -9,11 +9,11 @@ export const isValidRole = async(role = '') => {
     }
 }
 
-export const emailRegistered = async( email = '' ) => {
+export const hasRepeatedEmail = async( email = '' ) => {
 
     // Verificar si el correo existe
-    const existEmail = await User.findOne({ email });
-    if ( existEmail ) {
-        throw new Error(`The email: ${ email } is already exist in the DB`);
+    const foundEmail = await User.findOne({ email });
+    if ( foundEmail ) {
+        throw new Error(`Cambiar por The email: ${ email } already exists in the DB`);
     }
 }

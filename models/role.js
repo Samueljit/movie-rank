@@ -1,5 +1,5 @@
-import pkg from 'mongoose';
-const { Schema, model } = pkg;
+import mongoose from 'mongoose';
+const { Schema, model } = mongoose;
 
 const RoleSchema = Schema({
     role: {
