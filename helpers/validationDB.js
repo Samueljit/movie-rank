@@ -11,9 +11,8 @@ export const isValidRole = async(role = '') => {
 
 export const hasRepeatedEmail = async( email = '' ) => {
 
-    // Verificar si el correo existe
     const foundEmail = await User.findOne({ email });
     if ( foundEmail ) {
-        throw new Error(`Cambiar por The email: ${ email } already exists in the DB`);
+        throw new Error(`The email: ${ email } already exists in the DB`);
     }
 }

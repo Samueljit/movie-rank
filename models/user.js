@@ -23,7 +23,9 @@ const UserSchema = Schema({
         allowed: ['ADMIN_ROLE', 'USER_ROLE']
     },
     active: {
-        type: required
+        type: Boolean,
+        required: true,
+        default: true
     },
 });
 
