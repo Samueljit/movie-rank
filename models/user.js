@@ -1,6 +1,6 @@
 
-import pkg from 'mongoose';
-const { Schema, model } = pkg;
+import mongoose from 'mongoose';
+const { Schema, model } = mongoose;
 
 const UserSchema = Schema({
     username: {
@@ -15,6 +15,17 @@ const UserSchema = Schema({
     password: {
         type: String,
         required: [true, 'the password is required'],
+    },
+    role: {
+        type: String,
+        required: true,
+        default: 'USER_ROLE',
+        allowed: ['ADMIN_ROLE', 'USER_ROLE']
+    },
+    active: {
+        type: Boolean,
+        required: true,
+        default: true
     },
 });
 
