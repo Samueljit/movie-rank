@@ -1,11 +1,13 @@
 import { Router } from 'express';
 import { check } from 'express-validator';
 
-import { usersPost } from '../controllers/users.js';
+import { usersPost, userGetAll } from '../controllers/users.js';
 import { validateFields } from '../middlewares/validate-fields.js';
 import {hasRepeatedEmail, isValidRole} from '../helpers/validationDB.js'
 
 const router = Router();
+
+router.get('/', userGetAll);
 
 router.post('/', [
     check('username','The username is required').not().isEmpty(),
@@ -15,5 +17,6 @@ router.post('/', [
     check('role').custom(isValidRole),
     validateFields
 ], usersPost);
+
 
 export default router;

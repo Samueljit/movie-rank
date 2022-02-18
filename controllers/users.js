@@ -12,3 +12,20 @@ export const usersPost = async (req = request, res = response) => {
         user
     })
 }
+
+export const userGetAll = async (req = request, res = response) => {
+
+    const {from = 0} = req.query;
+    const query = { status: true };
+
+    const [ total, users ] = await Promise.all([
+        User.countDocuments(query),
+        User.find(query)
+            .skip( Number(from))
+    ]);
+
+    res.json({
+        total,
+        users
+    });    
+}
