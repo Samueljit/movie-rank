@@ -16,3 +16,11 @@ export const hasRepeatedEmail = async( email = '' ) => {
         throw new Error(`The email: ${ email } already exists in the DB`);
     }
 }
+
+export const isExistingUser = async( id ) => {
+
+    const foundID = await User.findById(id);
+    if ( !foundID ) {
+        throw new Error(`There is not a user with id: ${ id }`);
+    }
+}

@@ -1,13 +1,19 @@
 import { Router } from 'express';
 import { check } from 'express-validator';
 
-import { usersPost, userGetAll } from '../controllers/users.js';
+import { usersPost, userGetAll, userGet } from '../controllers/users.js';
 import { validateFields } from '../middlewares/validate-fields.js';
-import {hasRepeatedEmail, isValidRole} from '../helpers/validationDB.js'
+import {hasRepeatedEmail, isValidRole, isExistingUser} from '../helpers/validationDB.js'
 
 const router = Router();
 
 router.get('/', userGetAll);
+
+router.get('/:id', [
+    check('id', 'The provided id is not valid').isMongoId(),
+    check('id').custom(isExistingUser),
+    validateFields
+    ], userGet);
 
 router.post('/', [
     check('username','The username is required').not().isEmpty(),
