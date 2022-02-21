@@ -17,10 +17,10 @@ export const hasRepeatedEmail = async( email = '' ) => {
     }
 }
 
-export const isExistingUser = async( id ) => {
+// export const isExistingUser = async( id ) => {
 
-    const foundID = await User.findById(id);
-    if ( !foundID ) {
-        throw new Error(`There is not a user with id: ${ id }`);
-    }
-}
+//     const foundID = await User.findById(id).where('active',true).exec();
+//     if ( !foundID ) {
+//         throw new Error(`There is not a user with id: ${ id }`);
+//     }
+// }

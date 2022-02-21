@@ -30,8 +30,11 @@ export const userGetAll = async (req = request, res = response) => {
 export const userGet = async (req = request, res = response) =>{
 
     const { id } = req.params;
-    const user = await User.findById(id);
-
+    const user = await User.findById(id).where('active',true).exec();
+    if ( !user ) {
+        throw new Error(`There is not a user with id: ${ id }`);
+    }
+                    
     res.json(user);
 
 }
