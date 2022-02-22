@@ -15,7 +15,6 @@ router.get('/', userGetAll);
 
 router.get('/:id', [
     check('id', 'The provided id is not valid').isMongoId(),
-    check('id').custom(isExistingUser),  
     validateFields
     ], userGet);
 
@@ -30,8 +29,8 @@ router.post('/', [
 
 router.put('/:id', [
     check('id', 'The provided id is not valid').isMongoId(),
+    check('id').custom(isExistingUser),
     validateFields
 ], userPut);
-
 
 export default router;

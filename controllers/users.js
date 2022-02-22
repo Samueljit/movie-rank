@@ -45,9 +45,6 @@ export const userPut = async (req = request, res = response) => {
     const { active, role, uuid, ...data } = req.body;
 
     const user = await User.findByIdAndUpdate(id, data);
-    if ( !user ) {
-        throw new Error(`There is not a user with id: ${ id }`);
-    }
 
     res.status(200).json(user);
 }
