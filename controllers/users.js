@@ -38,3 +38,13 @@ export const userGet = async (req = request, res = response) =>{
     res.json(user);
 
 }
+
+export const userPut = async (req = request, res = response) => {
+
+    const { id } = req.params;
+    const { active, role, uuid, ...data } = req.body;
+
+    const user = await User.findByIdAndUpdate(id, data);
+
+    res.status(200).json(user);
+}
