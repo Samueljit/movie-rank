@@ -49,3 +49,14 @@ export const userPut = async (req = request, res = response) => {
     res.status(200).json(user);
 }
 
+export const userDelete = async (req = request, res = response) => {
+
+    const { id } = req.params;
+
+    const user = await User.findByIdAndUpdate(id, {active: false});
+
+    res.status(200).json({
+        message: `the user with the id: ${id} was removed from the DB`,
+        user
+    });
+}

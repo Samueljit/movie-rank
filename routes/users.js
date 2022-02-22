@@ -4,7 +4,8 @@ import { check } from 'express-validator';
 import { usersPost, 
          userGetAll, 
          userGet, 
-         userPut } from '../controllers/users.js';
+         userPut, 
+         userDelete} from '../controllers/users.js';
 
 import { validateFields } from '../middlewares/validate-fields.js';
 import {hasRepeatedEmail, isValidRole, isExistingUser} from '../helpers/validationDB.js'
@@ -32,5 +33,11 @@ router.put('/:id', [
     check('id').custom(isExistingUser),
     validateFields
 ], userPut);
+
+router.delete('/:id', [
+    check('id', 'The provided id is not valid').isMongoId(),
+    check('id').custom(isExistingUser),
+    validateFields
+], userDelete)
 
 export default router;
