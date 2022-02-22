@@ -30,7 +30,6 @@ router.post('/', [
 
 router.put('/:id', [
     check('id', 'The provided id is not valid').isMongoId(),
-    check('id').custom(isExistingUser),
     validateFields
 ], userPut);
 
