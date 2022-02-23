@@ -26,6 +26,7 @@ jobs:
         with:
           diff-search: true
           file-url: https://raw.githubusercontent.com/Samueljit/movie-rank/main/package.json
+          assume-same-version: old
           static-checking: localIsNew
 
       - name: Log when changed
