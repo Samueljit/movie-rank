@@ -25,6 +25,8 @@ jobs:
         uses: EndBug/version-check@v1
         with:
           diff-search: true
+          file-url: https://github.com/Samueljit/movie-rank/blob/main/package.json
+          static-checking: localIsNew
 
       - name: Fail if the version hasn't been changed
         if: steps.version-check.outputs.changed == 'false'
