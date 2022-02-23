@@ -21,22 +21,4 @@ jobs:
           node-version-file: '.nvmrc'
 
       - name: Check if version has been updated
-        id: version-check
-        uses: EndBug/version-check@v1
-        with:
-          diff-search: true
-          file-url: https://raw.githubusercontent.com/Samueljit/movie-rank/main/package.json
-          assume-same-version: old
-          # static-checking: localIsNew
-
-      - name: Log when changed
-        if: steps.check.outputs.changed == 'true'
-        run: 'echo "Version change found in commit ${{ steps.check.outputs.commit }}! New version: ${{ steps.check.outputs.version }} (${{ steps.check.outputs.type }})"'
-
-      - name: Log when unchanged
-        if: steps.check.outputs.changed == 'false'
-        run: 'echo "No version change :/"'
-
-      - name: Fail if the version hasn't been changed
-        if: steps.version-check.outputs.changed == 'false'
-        run: 'throw "Please update the package.json version"'
+        uses: thepassle/changelog-enforcer@0.0.6
