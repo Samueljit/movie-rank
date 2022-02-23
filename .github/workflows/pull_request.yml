@@ -21,4 +21,4 @@ jobs:
           node-version-file: '.nvmrc'
 
       - name: Check if version has been updated
-        uses: thepassle/changelog-enforcer@0.0.6
+        uses: kriasoft/check-version@v1
