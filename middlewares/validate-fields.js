@@ -1,7 +1,22 @@
 import { validationResult } from 'express-validator';
-import { response } from 'express';
+import { request, response } from 'express';
 
-export const validateFields = (req, res = response, next) => {
+
+
+export const titleRequired = async (req = request, res = response, next) =>{
+
+    const queryTitle = await req.query.title
+
+    if (!queryTitle) {
+        return res.status(400).json({
+          message: 'The title is required'
+        })
+      }
+
+      next();
+}
+
+export const validateFields = (req = request, res = response, next) => {
 
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -12,5 +27,6 @@ export const validateFields = (req, res = response, next) => {
     }
 
     next();
-
 }
+
+

@@ -11,13 +11,7 @@ export const movieGet = async (req = request, res = response) => {
       const jwt = process.env.API_V4_TMDB;
       const url = process.env.MOVIE_SEARCH_URL;
 
-      if (!queryTitle) {
-        res.status(400).json({
-          message: 'The title is required'
-        })
-      }
-
-      axios.get(url, {
+      await axios.get(url, {
           headers: {'Authorization': `Bearer ${jwt}`},
           params: {
           query: queryTitle
@@ -34,6 +28,6 @@ export const movieGet = async (req = request, res = response) => {
         
         })
     } catch (error) {
-      console.log(error);
+      res.status(500).json({message: error});
     }
 }

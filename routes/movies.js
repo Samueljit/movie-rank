@@ -1,11 +1,13 @@
 import { Router } from 'express';
-import { check } from 'express-validator';
 import { movieGet } from '../controllers/movies.js';
-
+import { titleRequired, validateFields } from '../middlewares/validate-fields.js'
 
 const router = Router();
 
-router.get('/search', movieGet);
+router.get('/search', [
+    titleRequired, 
+    validateFields], 
+    movieGet);
 
 
 export default router;
