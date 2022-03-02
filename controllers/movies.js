@@ -9,7 +9,8 @@ export const movieGet = async (req = request, res = response) => {
 
       const queryTitle = req.query.title;
       const jwt = process.env.API_V4_TMDB;
-      const url = process.env.MOVIE_SEARCH_URL;
+      const url = "http://www.Marico.coms" 
+      //process.env.MOVIE_SEARCH_URL;
 
       await axios.get(url, {
           headers: {'Authorization': `Bearer ${jwt}`},
