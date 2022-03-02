@@ -1,6 +1,6 @@
 {
   "name": "movie-rank",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "pronto",
   "main": "app.js",
   "type": "module",
@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/Samueljit/movie-rank#readme",
   "dependencies": {
+    "axios": "^0.26.0",
     "cors": "^2.8.5",
     "dotenv": "^15.0.0",
     "express": "^4.17.2",
