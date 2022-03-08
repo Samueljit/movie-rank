@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  checks:
+  version_check:
     runs-on: ubuntu-latest
 
     steps:
@@ -15,10 +15,29 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}
 
-      - name: Setup Node
-        uses: actions/setup-node@v2
-        with:
-          node-version-file: '.nvmrc'
+      # - name: Setup Node
+      #   uses: actions/setup-node@v2
+      #   with:
+      #     node-version-file: '.nvmrc'
 
       - name: Check if version has been updated
         uses: kriasoft/check-version@v1
+  
+    eslint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Check ESLint configuration
+        uses: mrdivyansh/eslint-action@1.0.7
+        # GITHUB_TOKEN in forked repositories is read-only
+        # https://help.github.com/en/actions/reference/events-that-trigger-workflows#pull-request-event-pull_request
+        with:
+          # repo-token: ${{secrets.GITHUB_TOKEN}}
+          eslint-rc: .eslintrc.js
+          execute-on-files:
+            - .

@@ -1,32 +1,28 @@
 import { validationResult } from 'express-validator';
 import { request, response } from 'express';
 
+export const titleRequired = (req = request, res = response, next) =>{
 
+  const queryTitle = req.query.title;
 
-export const titleRequired = async (req = request, res = response, next) =>{
+  if (!queryTitle) {
+    return res.status(400).json({
+      message: 'The title is required'
+    });
+  }
 
-    const queryTitle = await req.query.title
-
-    if (!queryTitle) {
-        return res.status(400).json({
-          message: 'The title is required'
-        })
-      }
-
-      next();
-}
+  next();
+};
 
 export const validateFields = (req = request, res = response, next) => {
 
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-        return res.status(400).json({
-            message: "Bad Request",
-            errors
-        })
-    }
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({
+      message: 'Bad Request',
+      errors
+    });
+  }
 
-    next();
-}
-
-
+  next();
+};
