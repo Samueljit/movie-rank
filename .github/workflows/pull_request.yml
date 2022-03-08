@@ -35,4 +35,4 @@ jobs:
       - name: Execute ESLint
         uses: permafrost-dev/eslint-docker-ga@main
         with:
-          args: .
+          args: --config .eslintrc.json .
