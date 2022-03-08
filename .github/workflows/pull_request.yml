@@ -23,7 +23,7 @@ jobs:
       - name: Check if version has been updated
         uses: kriasoft/check-version@v1
   
-    eslint:
+  eslint:
     runs-on: ubuntu-latest
 
     steps:
