@@ -32,12 +32,12 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}
           
-      - name: Setup Node
-        uses: actions/setup-node@v2
-        with:
-          node-version-file: '.nvmrc'
+      # - name: Setup Node
+      #   uses: actions/setup-node@v2
+      #   with:
+      #     node-version-file: '.nvmrc'
 
-      - name: Execute ESLint 
+      - name: Execute ESLint
         uses: Krizzu/eslint-check-action@v1.1.0
         with:
           ghToken: ${{ secrets.GITHUB_TOKEN }}
