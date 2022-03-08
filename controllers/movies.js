@@ -1,6 +1,5 @@
-import axios from 'axios';
-
 import { request, response } from 'express';
+import axios from 'axios';
 
 export const movieGet = async (req = request, res = response) => {
 

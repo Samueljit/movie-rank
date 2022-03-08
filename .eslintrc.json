@@ -27,7 +27,10 @@
         ],
         "newline-before-return": "error",
         "no-var": "error",
-        "sort-imports": "error",
+        "sort-imports": [
+            "error",
+            { "ignoreCase": true }
+        ],
         "array-bracket-newline": [
             "error", 
             { "multiline": true, "minItems": 3 }

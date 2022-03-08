@@ -1,14 +1,12 @@
-import { Router } from 'express';
-import { check } from 'express-validator';
-
+import {hasRepeatedEmail, isExistingUser, isValidRole} from '../helpers/validationDB.js';
 import { userDelete, 
   userGet, 
   userGetAll, 
   userPut, 
   usersPost} from '../controllers/users.js';
-
+import { check } from 'express-validator';
+import { Router } from 'express';
 import { validateFields } from '../middlewares/validate-fields.js';
-import {hasRepeatedEmail, isExistingUser, isValidRole} from '../helpers/validationDB.js';
 
 const router = Router();
 

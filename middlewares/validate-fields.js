@@ -1,5 +1,5 @@
-import { validationResult } from 'express-validator';
 import { request, response } from 'express';
+import { validationResult } from 'express-validator';
 
 export const titleRequired = (req = request, res = response, next) =>{
 
