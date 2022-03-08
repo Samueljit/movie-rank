@@ -40,4 +40,4 @@ jobs:
           # repo-token: ${{secrets.GITHUB_TOKEN}}
           eslint-rc: .eslintrc.js
           execute-on-files:
-            - .
+            - ./
