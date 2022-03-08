@@ -38,6 +38,7 @@ jobs:
           node-version-file: '.nvmrc'
 
       - name: Execute ESLint 
-        uses: mrdivyansh/eslint-action@v1.0.7
+        uses: Krizzu/eslint-check-action@v1.1.0
         with:
-          repo-token: ${{secrets.GITHUB_TOKEN}}
+          ghToken: ${{ secrets.GITHUB_TOKEN }}
+          eslintConfig: "./.eslintrc.json",
