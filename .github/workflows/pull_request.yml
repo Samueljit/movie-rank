@@ -33,4 +33,6 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
 
       - name: Execute ESLint
-        uses: 123FLO321/action-eslint-standalone@1.0.0
+        uses: permafrost-dev/eslint-docker-ga@main
+        with:
+          args: .
