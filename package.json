@@ -23,10 +23,13 @@
   "homepage": "https://github.com/Samueljit/movie-rank#readme",
   "dependencies": {
     "axios": "^0.26.0",
+    "bcrypt": "^5.0.1",
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^15.0.0",
     "express": "^4.17.2",
     "express-validator": "^6.14.0",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.1.10"
   }
 }

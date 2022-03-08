@@ -2,8 +2,10 @@ import express from 'express';
 import cors from 'cors';
 
 import usersRoutes from "../routes/users.js";
-import dbConnection from '../DB/config.js';
 import moviesRoutes from '../routes/movies.js';
+import authRoutes from '../routes/auth.js';
+
+import dbConnection from '../DB/config.js';
 
 class Server {
 
@@ -14,7 +16,8 @@ class Server {
        
         this.paths = {
             users: '/api/users',
-            movies: '/api/movies'
+            movies: '/api/movies',
+            auth: '/api/auth'
         }
 
         this.connectDB();
@@ -37,6 +40,7 @@ class Server {
     routes() {
         this.app.use(this.paths.users, usersRoutes);
         this.app.use(this.paths.movies, moviesRoutes);
+        this.app.use(this.paths.auth, authRoutes);
     }
 
     listen() {

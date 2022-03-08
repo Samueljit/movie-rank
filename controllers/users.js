@@ -1,10 +1,12 @@
+import bcrypt from 'bcrypt';
+const {hashSync}  = bcrypt;
 import { request, response } from 'express';
 import User from '../models/user.js';
 
 export const usersPost = async (req = request, res = response) => {
 
     const {username, email, password, role} = req.body;
-    const user = new User({ username, email, password, role });
+    const user = new User({ username, email, password: hashSync(password, 8), role });
    
     await user.save();
 
