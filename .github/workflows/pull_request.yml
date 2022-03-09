@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  checks:
+  version_check:
     runs-on: ubuntu-latest
 
     steps:
@@ -15,10 +15,24 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}
 
-      - name: Setup Node
-        uses: actions/setup-node@v2
-        with:
-          node-version-file: '.nvmrc'
-
       - name: Check if version has been updated
         uses: kriasoft/check-version@v1
+  
+  eslint_check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Execute ESLint
+        uses: permafrost-dev/eslint-docker-ga@main
+        with:
+          args: --fix --config .eslintrc.json .
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "fix: Fix styling"

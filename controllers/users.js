@@ -1,64 +1,64 @@
+import { request, response } from 'express';
 import bcrypt from 'bcrypt';
 const {hashSync}  = bcrypt;
-import { request, response } from 'express';
 import User from '../models/user.js';
 
 export const usersPost = async (req = request, res = response) => {
 
-    const {username, email, password, role} = req.body;
-    const user = new User({ username, email, password: hashSync(password, 8), role });
+  const {username, email, password, role} = req.body;
+  const user = new User({ username, email, password: hashSync(password, 8), role });
    
-    await user.save();
+  await user.save();
 
-    res.status(201).json({
-        user
-    })
-}
+  res.status(201).json({
+    user
+  });
+};
 
-export const userGetAll = async (req = request, res = response) => {
+export const userGetAll = async (_req = request, res = response) => {
 
-    const query = { active: true };
-    const [ total, users ] = await Promise.all([
-        User.countDocuments(query),
-        User.find(query)
-    ]);
+  const query = { active: true };
+  const [ total, users ] = await Promise.all([
+    User.countDocuments(query),
+    User.find(query)
+  ]);
 
-    res.json({
-        total,
-        users
-    });    
-}
+  res.json({
+    total,
+    users
+  });    
+};
 
 export const userGet = async (req = request, res = response) =>{
 
-    const { id } = req.params;
-    const user = await User.findById(id).where('active',true).exec();
-    if ( !user ) {
-        throw new Error(`There is not a user with id: ${ id }`);
-    }
+  const { id } = req.params;
+  const user = await User.findById(id).where('active',true).exec();
+  if (!user) {
+    throw new Error(`There is not a user with id: ${ id }`);
+  }
                     
-    res.json(user);
+  res.json(user);
 
-}
+};
 
 export const userPut = async (req = request, res = response) => {
 
-    const { id } = req.params;
-    const { active, role, uuid, ...data } = req.body;
+  const { id } = req.params;
+  const { active, role, uuid, ...data } = req.body;
 
-    const user = await User.findByIdAndUpdate(id, data);
+  const user = await User.findByIdAndUpdate(id, data);
 
-    res.status(200).json(user);
-}
+  res.status(200).json(user);
+};
 
 export const userDelete = async (req = request, res = response) => {
 
-    const { id } = req.params;
+  const { id } = req.params;
 
-    const user = await User.findByIdAndUpdate(id, {active: false});
+  const user = await User.findByIdAndUpdate(id, {active: false});
 
-    res.status(200).json({
-        message: `the user with the id: ${id} was removed from the DB`,
-        user
-    });
-}
+  res.status(200).json({
+    message: `the user with the id: ${id} was removed from the DB`,
+    user
+  });
+};
