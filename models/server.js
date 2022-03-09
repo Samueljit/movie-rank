@@ -12,40 +12,40 @@ class Server {
     this.app = express();
     this.port = process.env.PORT;
        
-        this.paths = {
-            users: '/api/users',
-            movies: '/api/movies',
-            auth: '/api/auth'
-        }
+    this.paths = {
+      users: '/api/users',
+      movies: '/api/movies',
+      auth: '/api/auth'
+    };
 
-        this.connectDB();
-        this.middlewares();
-        this.routes();
-    }
+    this.connectDB();
+    this.middlewares();
+    this.routes();
+  }
 
-    async connectDB() {
-        await dbConnection();
-    }
+  async connectDB() {
+    await dbConnection();
+  }
 
-    middlewares() {
-        this.app.use( cors() );
+  middlewares() {
+    this.app.use(cors());
 
-        this.app.use( express.json() );
+    this.app.use(express.json());
 
-        this.app.use( express.static( 'public' ) );
-    }
+    this.app.use(express.static('public'));
+  }
 
-    routes() {
-        this.app.use(this.paths.users, usersRoutes);
-        this.app.use(this.paths.movies, moviesRoutes);
-        this.app.use(this.paths.auth, authRoutes);
-    }
+  routes() {
+    this.app.use(this.paths.users, usersRoutes);
+    this.app.use(this.paths.movies, moviesRoutes);
+    this.app.use(this.paths.auth, authRoutes);
+  }
 
-    listen() {
-        this.app.listen(this.port, () => {
-            console.log(`Server running on port ${this.port}`)
-        });
-    }
+  listen() {
+    this.app.listen(this.port, () => {
+      console.log(`Server running on port ${this.port}`);
+    });
+  }
 }
 
 export default Server;

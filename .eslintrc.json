@@ -27,6 +27,10 @@
         ],
         "newline-before-return": "error",
         "no-var": "error",
+        "space-in-parens": [
+            "error", 
+            "never"
+        ],
         "sort-imports": [
             "error",
             { "ignoreCase": true }

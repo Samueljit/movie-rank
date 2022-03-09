@@ -1,12 +1,12 @@
+import { request, response } from 'express';
 import bcrypt from 'bcrypt';
 const {hashSync}  = bcrypt;
-import { request, response } from 'express';
 import User from '../models/user.js';
 
 export const usersPost = async (req = request, res = response) => {
 
-    const {username, email, password, role} = req.body;
-    const user = new User({ username, email, password: hashSync(password, 8), role });
+  const {username, email, password, role} = req.body;
+  const user = new User({ username, email, password: hashSync(password, 8), role });
    
   await user.save();
 
@@ -33,7 +33,7 @@ export const userGet = async (req = request, res = response) =>{
 
   const { id } = req.params;
   const user = await User.findById(id).where('active',true).exec();
-  if ( !user ) {
+  if (!user) {
     throw new Error(`There is not a user with id: ${ id }`);
   }
                     
