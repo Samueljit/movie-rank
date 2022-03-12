@@ -17,10 +17,10 @@ export const titleRequired = (req = request, res = response, next) =>{
 export const validateFields = (req = request, res = response, next) => {
 
   const errors = validationResult(req);
+
   if (!errors.isEmpty()) {
     return res.status(400).json({
-      message: 'Bad Request',
-      errors
+      message: errors.errors[0].msg
     });
   }
 

@@ -15,7 +15,7 @@ export const usersPost = async (req = request, res = response) => {
   });
 };
 
-export const userGetAll = async (_req = request, res = response) => {
+export const usersGetAll = async (_req = request, res = response) => {
 
   const query = { active: true };
   const [ total, users ] = await Promise.all([
@@ -29,7 +29,7 @@ export const userGetAll = async (_req = request, res = response) => {
   });    
 };
 
-export const userGet = async (req = request, res = response) =>{
+export const usersGet = async (req = request, res = response) =>{
 
   const { id } = req.params;
   const user = await User.findById(id).where('active',true).exec();
@@ -41,7 +41,7 @@ export const userGet = async (req = request, res = response) =>{
 
 };
 
-export const userPut = async (req = request, res = response) => {
+export const usersPut = async (req = request, res = response) => {
 
   const { id } = req.params;
   const { active, role, uuid, ...data } = req.body;
@@ -51,7 +51,7 @@ export const userPut = async (req = request, res = response) => {
   res.status(200).json(user);
 };
 
-export const userDelete = async (req = request, res = response) => {
+export const usersDelete = async (req = request, res = response) => {
 
   const { id } = req.params;
 

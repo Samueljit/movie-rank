@@ -1,7 +1,7 @@
 import { request, response } from 'express';
 import axios from 'axios';
 
-export const movieGet = async (req = request, res = response) => {
+export const moviesGet = async (req = request, res = response) => {
 
   try {
     const queryTitle = req.query.title;

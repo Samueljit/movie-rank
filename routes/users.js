@@ -1,21 +1,21 @@
 import {hasRepeatedEmail, isExistingUser, isValidRole} from '../helpers/validationDB.js';
-import { userDelete, 
-  userGet, 
-  userGetAll, 
-  userPut, 
-  usersPost} from '../controllers/users.js';
+import { usersDelete, 
+  usersGet, 
+  usersGetAll, 
+  usersPost, 
+  usersPut} from '../controllers/users.js';
 import { check } from 'express-validator';
 import { Router } from 'express';
 import { validateFields } from '../middlewares/validate-fields.js';
 
 const router = Router();
 
-router.get('/', userGetAll);
+router.get('/', usersGetAll);
 
 router.get('/:id', [
   check('id', 'The provided id is not valid').isMongoId(),
   validateFields
-], userGet);
+], usersGet);
 
 router.post('/', [
   check('username','The username is required').not().isEmpty(),
@@ -30,12 +30,12 @@ router.put('/:id', [
   check('id', 'The provided id is not valid').isMongoId(),
   check('id').custom(isExistingUser),
   validateFields
-], userPut);
+], usersPut);
 
 router.delete('/:id', [
   check('id', 'The provided id is not valid').isMongoId(),
   check('id').custom(isExistingUser),
   validateFields
-], userDelete);
+], usersDelete);
 
 export default router;
