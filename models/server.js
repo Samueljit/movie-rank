@@ -3,8 +3,8 @@ import cors from 'cors';
 import dbConnection from '../DB/config.js';
 import express from 'express';
 import moviesRoutes from '../routes/movies.js';
+import rankingsRoutes from '../routes/rankings.js';
 import usersRoutes from '../routes/users.js';
-import topRoutes from '../routes/top.js';
 
 class Server {
 
@@ -17,7 +17,7 @@ class Server {
       users: '/api/users',
       movies: '/api/movies',
       auth: '/api/auth',
-      top: '/api/top'
+      rankings: '/api/rankings'
     };
 
     this.connectDB();
@@ -31,9 +31,7 @@ class Server {
 
   middlewares() {
     this.app.use(cors());
-
     this.app.use(express.json());
-
     this.app.use(express.static('public'));
   }
 
@@ -41,7 +39,7 @@ class Server {
     this.app.use(this.paths.users, usersRoutes);
     this.app.use(this.paths.movies, moviesRoutes);
     this.app.use(this.paths.auth, authRoutes);
-    this.app.use(this.paths.top, topRoutes);
+    this.app.use(this.paths.rankings, rankingsRoutes);
   }
 
   listen() {

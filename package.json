@@ -1,6 +1,6 @@
 {
   "name": "movie-rank",
-  "version": "0.10.0",
+  "version": "0.11.0",
   "description": "Simple NodeJS Backend for a Movie Ranking application. Allows you to create your own Top10 Rankings of movies, it uses the TMDB API for fetching information about movies",
   "main": "app.js",
   "type": "module",
@@ -31,5 +31,8 @@
     "express-validator": "^6.14.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.1.10"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }
