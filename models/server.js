@@ -4,6 +4,7 @@ import dbConnection from '../DB/config.js';
 import express from 'express';
 import moviesRoutes from '../routes/movies.js';
 import usersRoutes from '../routes/users.js';
+import topRoutes from '../routes/top.js';
 
 class Server {
 
@@ -15,7 +16,8 @@ class Server {
     this.paths = {
       users: '/api/users',
       movies: '/api/movies',
-      auth: '/api/auth'
+      auth: '/api/auth',
+      top: '/api/top'
     };
 
     this.connectDB();
@@ -39,6 +41,7 @@ class Server {
     this.app.use(this.paths.users, usersRoutes);
     this.app.use(this.paths.movies, moviesRoutes);
     this.app.use(this.paths.auth, authRoutes);
+    this.app.use(this.paths.top, topRoutes);
   }
 
   listen() {
