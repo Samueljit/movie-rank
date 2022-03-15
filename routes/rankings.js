@@ -1,5 +1,7 @@
+import { rankingsGet,
+  rankingsGetAll,
+  rankingsPost } from '../controllers/rankings.js';
 import { check } from 'express-validator';
-import { rankingsPost } from '../controllers/rankings.js';
 import Router from 'express';
 import { validateFields } from '../middlewares/validate-fields.js';
 import { validateJWT } from '../middlewares/validate-jwt.js';
@@ -12,5 +14,13 @@ router.post('/',[
   check('movies', 'The field movies must have a length of 10').isLength({ min: 10 }),
   validateFields
 ], rankingsPost);
+
+router.get('/', [validateJWT], rankingsGetAll);
+
+router.get('/:id', [
+  validateJWT,
+  check('id','The id is invalid').isMongoId(),
+  validateFields
+], rankingsGet);
 
 export default router;
