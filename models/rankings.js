@@ -32,4 +32,10 @@ const MovieRankingSchema = Schema({
   ]
 });
 
+MovieRankingSchema.methods.toJSON = function() {
+  const { __v, ...movieRankings  } = this.toObject();
+  
+  return movieRankings;
+};
+
 export default model('MovieRanking', MovieRankingSchema);

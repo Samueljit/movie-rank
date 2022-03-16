@@ -51,12 +51,37 @@ export const rankingsGet = async (req = request, res = response) => {
     const movieRanking = await MovieRanking.findById(movieRankingId).where('userId').equals(userId).exec();
     if (!movieRanking) {
       return res.status(404).json({
-        message: 'Movie ranking not found'
+        message: 'The movie ranking not found'
       });
     }
     res.status(200).json({
       movieRanking
     });
+  } catch (error) {
+    res.status(500).json({
+      message: error.message
+    });
+  }
+};
+
+export const rankingsPut = async (req = request, res = response) => {
+
+  try {
+    
+    const {id} = req.params;
+    const {movies} = req.body;
+    
+    const movieRanking = await MovieRanking.findByIdAndUpdate(id, {movies});
+    if (!movieRanking) {
+      return res.status(404).json({
+        message: 'The movie rankings not found'
+      });
+    }
+
+    res.status(200).json({
+      message: 'movie rankings successfully updated'
+    });
+
   } catch (error) {
     res.status(500).json({
       message: error.message

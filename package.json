@@ -1,6 +1,6 @@
 {
   "name": "movie-rank",
-  "version": "0.12.0",
+  "version": "0.13.0",
   "description": "Simple NodeJS Backend for a Movie Ranking application. Allows you to create your own Top10 Rankings of movies, it uses the TMDB API for fetching information about movies",
   "main": "app.js",
   "type": "module",
