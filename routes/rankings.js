@@ -12,7 +12,7 @@ const router = Router();
 router.post('/',[
   validateJWT,
   check('movies', 'The field movies is required').not().isEmpty(),
-  check('movies', 'The field movies must have a length of 10').isLength({ min: 10 }),
+  check('movies', 'The field movies must have a length of 10').isArray({ min: 10, max: 10 }),
   validateFields
 ], rankingsPost);
 
@@ -27,7 +27,7 @@ router.get('/:id', [
 router.put('/:id', [
   validateJWT,
   check('movies', 'The field movies is required').not().isEmpty(),
-  check('movies', 'The field movies must have a length of 10').isLength({ min: 10 }),
+  check('movies', 'The field movies must have a length of 10').isArray({ min: 10, max: 10 }),
   validateFields
 ], rankingsPut);
 
