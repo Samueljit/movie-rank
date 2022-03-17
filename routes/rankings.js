@@ -1,8 +1,8 @@
-import { rankingsGet,
+import { rankingsDelete,
+  rankingsGet,
   rankingsGetAll,
   rankingsPost,
-  rankingsPut,
-  rankingsDelete } from '../controllers/rankings.js';
+  rankingsPut } from '../controllers/rankings.js';
 import { check } from 'express-validator';
 import Router from 'express';
 import { validateFields } from '../middlewares/validate-fields.js';
