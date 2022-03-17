@@ -79,12 +79,36 @@ export const rankingsPut = async (req = request, res = response) => {
     }
 
     res.status(200).json({
-      message: 'movie rankings successfully updated'
+      message: 'Movie rankings successfully updated'
     });
 
   } catch (error) {
     res.status(500).json({
       message: error.message
     });
+  }
+};
+
+export const rankingsDelete = async (req = request, res = response) => {
+
+
+  try {
+    
+    const { id } = req.params;
+    const movieRankingDeleted = await MovieRanking.findByIdAndDelete( id );
+    if (!movieRankingDeleted) {
+      return res.status(404).json({
+        message: 'The movie rankings not found'
+      });
+    }
+
+    res.status(200).json({
+      message: 'Movie rankings successfully deleted'
+    });
+
+  } catch (error) {
+    res.status(500).json({
+      message: error.message
+    });  
   }
 };
