@@ -1,4 +1,5 @@
-import { rankingsGet,
+import { rankingsDelete,
+  rankingsGet,
   rankingsGetAll,
   rankingsPost,
   rankingsPut } from '../controllers/rankings.js';
@@ -30,5 +31,11 @@ router.put('/:id', [
   check('movies', 'The field movies must have a length of 10').isArray({ min: 10, max: 10 }),
   validateFields
 ], rankingsPut);
+
+router.delete('/:id', [
+  validateJWT,
+  check('id', 'The provided id is not valid').isMongoId(),
+  validateFields
+], rankingsDelete);
 
 export default router;
