@@ -94,8 +94,8 @@ export const rankingsDelete = async (req = request, res = response) => {
   try {
     
     const { id } = req.params;
-    const movieRankingDeleted = await MovieRanking.findByIdAndDelete(id);
-    if (!movieRankingDeleted) {
+    const DeletedmovieRanking = await MovieRanking.findByIdAndDelete(id);
+    if (!DeletedmovieRanking) {
       return res.status(404).json({
         message: 'The movie rankings not found'
       });
